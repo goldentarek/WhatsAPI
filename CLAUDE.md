@@ -76,5 +76,41 @@ No autoloader. All files use manual `require_once` with paths relative to `src/p
 
 ## Workflow
 
-- Plan tasks in `tasks/todo.md` before implementing.
-- Record lessons after corrections in `tasks/lessons.md`.
+### Planning
+
+Enter plan mode for any non-trivial task (3+ steps or architectural decisions). Write the plan to `tasks/todo.md` with checkable items before writing any code. If something goes sideways mid-task, stop and re-plan immediately. Use plan mode for verification steps, not just building.
+
+### Subagents
+
+Use subagents liberally to keep the main context window clean. Offload research, exploration, and parallel analysis to subagents. One task per subagent for focused execution. For complex problems, throw more compute at it via subagents.
+
+### Self-Improvement Loop
+
+After any correction from the user, update `tasks/lessons.md` with the pattern: what the mistake was, why it happened, and the rule to prevent it going forward. Review `tasks/lessons.md` at the start of each session.
+
+### Verification
+
+Never mark a task complete without proving it works. Run tests, check logs, demonstrate correctness. Ask: "Would a staff engineer approve this?"
+
+### Elegance
+
+For non-trivial changes, pause and ask "is there a more elegant way?" If a fix feels hacky, implement the elegant solution instead. Skip this for simple, obvious fixes.
+
+### Bug Fixing
+
+When given a bug report, fix it — don't ask for hand-holding. Point at logs, errors, failing tests, then resolve them.
+
+### Task Management Steps
+
+1. Write plan to `tasks/todo.md` with checkable items
+2. Check in before starting implementation
+3. Mark items complete as you go
+4. Give a high-level summary at each step
+5. Add a review section to `tasks/todo.md` when done
+6. Update `tasks/lessons.md` after any user correction
+
+### Core Principles
+
+- **Simplicity first:** Make every change as simple as possible. Impact minimal code.
+- **No laziness:** Find root causes. No temporary fixes.
+- **Minimal impact:** Only touch what's necessary. No side effects.
